@@ -32,6 +32,13 @@ function resolveCurrentPath(url$1, dir) {
     return path.resolve(url.fileURLToPath(url$1), dir);
 }
 
+function getPackage(path$1) {
+    path$1 = path$1 || path.resolve(process.cwd(), 'package.json');
+    const packages = fs$1.readFileSync(path$1, { encoding: 'utf-8' });
+    return JSON.parse(packages);
+}
+
 exports.cpFile = cpFile;
+exports.getPackage = getPackage;
 exports.resolveCurrentPath = resolveCurrentPath;
 exports.rm = rm;

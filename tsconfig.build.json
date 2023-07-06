@@ -4,6 +4,7 @@
     "lib": [
       "ESNext"
     ],
+    "outDir": "dist/types",
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
     "module": "ESNext",
@@ -24,7 +25,7 @@
     "skipLibCheck": true,
     "resolveJsonModule": true,
     "declaration": true,
-    "noEmit": true
+    "emitDeclarationOnly": true
   },
   "exclude": [
     "__test__/**/*",

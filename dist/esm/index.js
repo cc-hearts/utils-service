@@ -1,4 +1,4 @@
-import { existsSync } from 'fs';
+import { existsSync, readFileSync } from 'fs';
 import fs, { mkdir, copyFile } from 'fs/promises';
 import { fileURLToPath } from 'url';
 import { resolve } from 'path';
@@ -30,4 +30,10 @@ function resolveCurrentPath(url, dir) {
     return resolve(fileURLToPath(url), dir);
 }
 
-export { cpFile, resolveCurrentPath, rm };
+function getPackage(path) {
+    path = path || resolve(process.cwd(), 'package.json');
+    const packages = readFileSync(path, { encoding: 'utf-8' });
+    return JSON.parse(packages);
+}
+
+export { cpFile, getPackage, resolveCurrentPath, rm };
