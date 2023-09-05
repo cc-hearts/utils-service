@@ -9,11 +9,13 @@ export default {
   input: "./index.ts",
   output: [
     {
-      file: "dist/cjs/index.cjs",
+      preserveModules: true,
+      dir: "dist/cjs",
       format: "cjs",
     },
     {
-      file: "dist/esm/index.js",
+      preserveModules: true,
+      dir: "dist/esm",
       format: "esm",
     },
   ],

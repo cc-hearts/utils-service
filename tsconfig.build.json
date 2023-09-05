@@ -28,9 +28,10 @@
     "emitDeclarationOnly": true
   },
   "exclude": [
-    "__test__/**/*",
+    "test/**/*",
     "node_modules/**/*",
     "rollup.config.js",
-    "types/**/*"
-  ]
+    "types/**/*",
+    "vitest.config.ts"
+  ],
 }
