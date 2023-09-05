@@ -1,6 +1,6 @@
 {
   "name": "@cc-heart/utils-service",
-  "version": "0.0.2",
+  "version": "1.0.0",
   "description": "A collection of tools 🔧 commonly used by service",
   "type": "module",
   "author": "cc heart",
