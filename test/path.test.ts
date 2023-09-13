@@ -18,15 +18,15 @@ describe('path modules', () => {
 
   it('find up package.json file', async () => {
     const currentPath = fileURLToPath(import.meta.url)
-    expect(await findUpPkg(currentPath, 'package.json')).toBe(resolve(currentPath, '../../package.json'))
+    expect(await findUpPkg(currentPath)).toBe(resolve(currentPath, '../../package.json'))
   })
 
   it('result is null when path is  system root directory', async () => {
-    expect(await findUpPkg(resolve('/'), 'package.json')).toBeNull()
+    expect(await findUpPkg(resolve('/'))).toBeNull()
   })
 
   it('find up package.json file path when path is current file path', async () => {
-    expect(await findUpPkg(fileURLToPath(import.meta.url), 'package.json')).toBe(resolve(fileURLToPath(import.meta.url), '../../package.json'))
+    expect(await findUpPkg(fileURLToPath(import.meta.url))).toBe(resolve(fileURLToPath(import.meta.url), '../../package.json'))
   })
 
 })

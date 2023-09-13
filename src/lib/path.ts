@@ -31,7 +31,7 @@ export function cwdJoin(...args: string[]) {
  * @param path
  * @returns
  */
-export async function findUpPkg(path: string, fileName: string) {
+export async function findUpFile(path: string, fileName: string) {
   if (fileName === void 0) {
     throw new Error('fileName is required')
   }
@@ -45,5 +45,10 @@ export async function findUpPkg(path: string, fileName: string) {
     return curPath
   }
   if (path === '/') return null
-  return findUpPkg(resolve(path, '..'), fileName)
+  return findUpFile(resolve(path, '..'), fileName)
+}
+
+
+export async function findUpPkg(path: string) {
+  return  findUpFile(path, 'package.json')
 }
