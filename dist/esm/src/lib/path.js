@@ -1,5 +1,7 @@
 import { fileURLToPath } from 'url';
 import { resolve } from 'path';
+import { isDirectory } from './valid.js';
+import { existsSync } from 'fs';
 
 /**
  * used in the alias of vite's configuration file etc.
@@ -19,5 +21,29 @@ function resolveCurrentPath(url) {
 function cwdJoin(...args) {
     return resolve(process.cwd(), ...args);
 }
+/**
+ * Step up to find the most recent file
+ *
+ * @param path
+ * @returns
+ */
+async function findUpPkg(path, fileName) {
+    if (fileName === void 0) {
+        throw new Error('fileName is required');
+    }
+    let curPath;
+    if (await isDirectory(path)) {
+        curPath = resolve(path, 'package.json');
+    }
+    else {
+        curPath = resolve(path, '../package.json');
+    }
+    if (existsSync(curPath)) {
+        return curPath;
+    }
+    if (path === '/')
+        return null;
+    return findUpPkg(resolve(path, '..'), fileName);
+}
 
-export { cwdJoin, resolveCurrentPath };
+export { cwdJoin, findUpPkg, resolveCurrentPath };

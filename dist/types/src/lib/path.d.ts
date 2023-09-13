@@ -12,3 +12,10 @@ export declare function resolveCurrentPath(url: string): string;
  * @return {string} - The joined path.
  */
 export declare function cwdJoin(...args: string[]): string;
+/**
+ * Step up to find the most recent file
+ *
+ * @param path
+ * @returns
+ */
+export declare function findUpPkg(path: string, fileName: string): any;
