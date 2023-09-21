@@ -11,6 +11,7 @@ exports.cpFile = fs.cpFile;
 exports.rm = fs.rm;
 exports.validateFilePathOrCreateMkdir = fs.validateFilePathOrCreateMkdir;
 exports.cwdJoin = path.cwdJoin;
+exports.findUpFile = path.findUpFile;
 exports.findUpPkg = path.findUpPkg;
 exports.resolveCurrentPath = path.resolveCurrentPath;
 exports.getPackage = pkg.getPackage;

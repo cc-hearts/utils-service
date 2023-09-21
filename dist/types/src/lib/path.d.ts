@@ -18,4 +18,5 @@ export declare function cwdJoin(...args: string[]): string;
  * @param path
  * @returns
  */
-export declare function findUpPkg(path: string, fileName: string): any;
+export declare function findUpFile(path: string, fileName: string): any;
+export declare function findUpPkg(path: string): Promise<any>;
