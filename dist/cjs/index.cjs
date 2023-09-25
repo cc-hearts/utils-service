@@ -1,9 +1,9 @@
 'use strict';
 
-var fs = require('./src/lib/fs.js');
-var path = require('./src/lib/path.js');
-var pkg = require('./src/lib/pkg.js');
-var valid = require('./src/lib/valid.js');
+var fs = require('./src/lib/fs.cjs');
+var path = require('./src/lib/path.cjs');
+var pkg = require('./src/lib/pkg.cjs');
+var valid = require('./src/lib/valid.cjs');
 
 
 

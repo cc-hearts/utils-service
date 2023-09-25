@@ -1,7 +1,7 @@
-import { fileURLToPath } from "url";
-import { resolve } from "path";
-import { isDirectory } from "./valid";
-import { existsSync } from "fs";
+import { fileURLToPath } from 'url'
+import { resolve } from 'path'
+import { isDirectory } from './valid'
+import { existsSync } from 'fs'
 
 /**
  * used in the alias of vite's configuration file etc.
@@ -10,9 +10,8 @@ import { existsSync } from "fs";
  * @returns {string}
  */
 export function resolveCurrentPath(url: string): string {
-  return resolve(fileURLToPath(url), '..');
+  return resolve(fileURLToPath(url), '..')
 }
-
 
 /**
  * Join the current working directory with the provided path arguments.
@@ -23,7 +22,6 @@ export function resolveCurrentPath(url: string): string {
 export function cwdJoin(...args: string[]) {
   return resolve(process.cwd(), ...args)
 }
-
 
 /**
  * Step up to find the most recent file
@@ -48,7 +46,12 @@ export async function findUpFile(path: string, fileName: string) {
   return findUpFile(resolve(path, '..'), fileName)
 }
 
-
+/**
+ * Finds the nearest "package.json" file by traversing up the directory tree starting from the given path.
+ *
+ * @param {string} path - The starting path to search from.
+ * @return {Promise<string>} A Promise that resolves to the path of the nearest "package.json" file, or null if not found.
+ */
 export async function findUpPkg(path: string) {
-  return  findUpFile(path, 'package.json')
+  return findUpFile(path, 'package.json')
 }

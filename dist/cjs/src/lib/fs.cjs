@@ -19,7 +19,7 @@ async function rm(path) {
  * @return {Promise<void>} - A promise that resolves once the directories are created.
  */
 async function validateFilePathOrCreateMkdir(filePath) {
-    const path = filePath.split("/").slice(0, -1).join("/");
+    const path = filePath.split('/').slice(0, -1).join('/');
     if (!fs.existsSync(path)) {
         await promises.mkdir(path, { recursive: true });
     }

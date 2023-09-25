@@ -1,5 +1,5 @@
-import { existsSync } from "fs";
-import { copyFile, mkdir, rm as _rm } from "fs/promises";
+import { existsSync } from 'fs'
+import { copyFile, mkdir, rm as _rm } from 'fs/promises'
 
 /**
  * Removes a file or directory at the specified path.
@@ -8,7 +8,7 @@ import { copyFile, mkdir, rm as _rm } from "fs/promises";
  * @return {Promise<void>} A promise that resolves when the file or directory is successfully removed.
  */
 export async function rm(path: string) {
-  await _rm(path, { recursive: true, force: true });
+  await _rm(path, { recursive: true, force: true })
 }
 
 /**
@@ -18,9 +18,9 @@ export async function rm(path: string) {
  * @return {Promise<void>} - A promise that resolves once the directories are created.
  */
 export async function validateFilePathOrCreateMkdir(filePath: string) {
-  const path = filePath.split("/").slice(0, -1).join("/");
+  const path = filePath.split('/').slice(0, -1).join('/')
   if (!existsSync(path)) {
-    await mkdir(path, { recursive: true });
+    await mkdir(path, { recursive: true })
   }
 }
 
@@ -33,8 +33,8 @@ export async function validateFilePathOrCreateMkdir(filePath: string) {
  */
 export async function cpFile(
   originFilePath: string,
-  targetFilePath: string
+  targetFilePath: string,
 ): Promise<void> {
   await validateFilePathOrCreateMkdir(targetFilePath)
-  return copyFile(originFilePath, targetFilePath);
+  return copyFile(originFilePath, targetFilePath)
 }

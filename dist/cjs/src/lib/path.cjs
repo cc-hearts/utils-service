@@ -2,7 +2,7 @@
 
 var url = require('url');
 var path = require('path');
-var valid = require('./valid.js');
+var valid = require('./valid.cjs');
 var fs = require('fs');
 
 /**
@@ -47,6 +47,12 @@ async function findUpFile(path$1, fileName) {
         return null;
     return findUpFile(path.resolve(path$1, '..'), fileName);
 }
+/**
+ * Finds the nearest "package.json" file by traversing up the directory tree starting from the given path.
+ *
+ * @param {string} path - The starting path to search from.
+ * @return {Promise<string>} A Promise that resolves to the path of the nearest "package.json" file, or null if not found.
+ */
 async function findUpPkg(path) {
     return findUpFile(path, 'package.json');
 }

@@ -1,8 +1,7 @@
-import { describe, it, expect } from "vitest";
+import { describe, it, expect } from 'vitest'
 import { getPackage } from '../src/lib/pkg'
 
 describe('pkg module', () => {
-
   it('load current package.json', async () => {
     const pkg = await getPackage()
 

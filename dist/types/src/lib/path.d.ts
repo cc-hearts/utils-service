@@ -19,4 +19,10 @@ export declare function cwdJoin(...args: string[]): string;
  * @returns
  */
 export declare function findUpFile(path: string, fileName: string): any;
+/**
+ * Finds the nearest "package.json" file by traversing up the directory tree starting from the given path.
+ *
+ * @param {string} path - The starting path to search from.
+ * @return {Promise<string>} A Promise that resolves to the path of the nearest "package.json" file, or null if not found.
+ */
 export declare function findUpPkg(path: string): Promise<any>;
