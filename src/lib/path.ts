@@ -29,7 +29,7 @@ export function cwdJoin(...args: string[]) {
  * @param path
  * @returns
  */
-export async function findUpFile(path: string, fileName: string) {
+export async function findUpFile(path: string, fileName: string): Promise<string | null> {
   if (fileName === void 0) {
     throw new Error('fileName is required')
   }
@@ -52,6 +52,6 @@ export async function findUpFile(path: string, fileName: string) {
  * @param {string} path - The starting path to search from.
  * @return {Promise<string>} A Promise that resolves to the path of the nearest "package.json" file, or null if not found.
  */
-export async function findUpPkg(path: string) {
+export async function findUpPkg(path: string): Promise<string | null> {
   return findUpFile(path, 'package.json')
 }
