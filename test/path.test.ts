@@ -1,5 +1,5 @@
 import { describe, it, expect, vi } from 'vitest'
-import { cwdJoin, resolveCurrentPath, findUpPkg } from '../src/lib/path'
+import { cwdJoin, resolveCurrentPath, findPackagePath } from '../src/lib/path'
 import { fileURLToPath } from 'url'
 import { resolve } from 'path'
 
@@ -14,19 +14,20 @@ describe('path modules', () => {
     expect(cwdJoin('./testPath')).toBe('/Users/heart/mock/testPath')
   })
 
-  it('find up package.json file', async () => {
+  it('find up package.json file path', async () => {
     const currentPath = fileURLToPath(import.meta.url)
-    expect(await findUpPkg(currentPath)).toBe(
+    expect(await findPackagePath(currentPath)).toBe(
       resolve(currentPath, '../../package.json'),
     )
   })
 
   it('result is null when path is  system root directory', async () => {
-    expect(await findUpPkg(resolve('/'))).toBeNull()
+    expect(await findPackagePath(resolve('/'))).toBeNull()
   })
 
   it('find up package.json file path when path is current file path', async () => {
-    expect(await findUpPkg(fileURLToPath(import.meta.url))).toBe(
+    console.log(await findPackagePath(fileURLToPath(import.meta.url)));
+    expect(await findPackagePath(fileURLToPath(import.meta.url))).toBe(
       resolve(fileURLToPath(import.meta.url), '../../package.json'),
     )
   })

@@ -3,3 +3,5 @@ node_modules
 coverage/**/*
 publish.sh
 .vscode
+
+dist/

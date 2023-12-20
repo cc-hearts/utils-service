@@ -1,3 +1,4 @@
+import { existsSync } from 'fs'
 import { stat } from 'fs/promises'
 
 /**
@@ -7,6 +8,7 @@ import { stat } from 'fs/promises'
  * @return {Promise<boolean>} A promise that resolves to a boolean indicating whether the path points to a file.
  */
 export async function isFile(path: string) {
+  if (!existsSync(path)) return false
   const file = await stat(path)
   return file.isFile()
 }
@@ -18,6 +20,7 @@ export async function isFile(path: string) {
  * @return {Promise<boolean>} A promise that resolves to true if the path is a directory, false otherwise.
  */
 export async function isDirectory(path: string) {
+  if (!existsSync(path)) return false
   const file = await stat(path)
   return file.isDirectory()
 }

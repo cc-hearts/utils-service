@@ -24,26 +24,23 @@ export function cwdJoin(...args: string[]) {
 }
 
 /**
- * Step up to find the most recent file
+ * Step up to find the most recent file path
  *
  * @param path
  * @returns
  */
-export async function findUpFile(path: string, fileName: string): Promise<string | null> {
+export async function findFilePath(path: string, fileName: string): Promise<string | null> {
   if (fileName === void 0) {
     throw new Error('fileName is required')
   }
-  let curPath: string
-  if (await isDirectory(path)) {
-    curPath = resolve(path, 'package.json')
-  } else {
-    curPath = resolve(path, '../package.json')
-  }
+  let curPath: string = resolve(path, fileName)
+
   if (existsSync(curPath)) {
     return curPath
   }
   if (path === '/') return null
-  return findUpFile(resolve(path, '..'), fileName)
+
+  return findFilePath(resolve(path, '..'), fileName)
 }
 
 /**
@@ -52,6 +49,6 @@ export async function findUpFile(path: string, fileName: string): Promise<string
  * @param {string} path - The starting path to search from.
  * @return {Promise<string>} A Promise that resolves to the path of the nearest "package.json" file, or null if not found.
  */
-export async function findUpPkg(path: string): Promise<string | null> {
-  return findUpFile(path, 'package.json')
+export async function findPackagePath(path: string): Promise<string | null> {
+  return findFilePath(path, 'package.json')
 }
