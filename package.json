@@ -1,6 +1,6 @@
 {
   "name": "@cc-heart/utils-service",
-  "version": "2.0.1",
+  "version": "3.0.0",
   "description": "A collection of tools 🔧 commonly used by service",
   "type": "module",
   "author": "cc heart",
@@ -10,7 +10,7 @@
     "test": "npx vitest",
     "coverage": "npx vitest run --coverage",
     "prettier": "npx prettier --write .",
-    "changelog": "npx conventional-changelog -p angular -i CHANGELOG.md -s -r 0"
+    "changelog": "npx conventional-changelog -p -i CHANGELOG.md -s -r 0"
   },
   "exports": {
     ".": [
