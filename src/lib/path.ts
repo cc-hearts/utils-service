@@ -1,6 +1,5 @@
 import { fileURLToPath } from 'url'
 import { resolve } from 'path'
-import { isDirectory } from './valid'
 import { existsSync } from 'fs'
 
 /**
