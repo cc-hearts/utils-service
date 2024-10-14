@@ -5,8 +5,8 @@ import { existsSync } from 'fs'
 /**
  * used in the alias of vite's configuration file etc.
  *
- * @param {string} url is import.meta.url
- * @returns {string}
+ * @param url is import.meta.url
+ * @returns
  */
 export function resolveCurrentPath(url: string): string {
   return resolve(fileURLToPath(url), '..')
@@ -15,8 +15,8 @@ export function resolveCurrentPath(url: string): string {
 /**
  * Join the current working directory with the provided path arguments.
  *
- * @param {...string[]} args - The path arguments to join with the current working directory.
- * @return {string} - The joined path.
+ * @param args - The path arguments to join with the current working directory.
+ * @return - The joined path.
  */
 export function cwdJoin(...args: string[]) {
   return resolve(process.cwd(), ...args)
